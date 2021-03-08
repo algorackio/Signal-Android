@@ -19,6 +19,9 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.text.HtmlCompat;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -44,15 +47,16 @@ public class BackupsPreferenceFragment extends Fragment {
 
   private static final short CHOOSE_BACKUPS_LOCATION_REQUEST_CODE = 26212;
 
-  private View        create;
-  private View        folder;
-  private View        verify;
-  private TextView    toggle;
-  private TextView    info;
-  private TextView    summary;
-  private TextView    folderName;
-  private ProgressBar progress;
-  private TextView    progressSummary;
+  private View            create;
+  private View            folder;
+  private View            verify;
+  private TextView        toggle;
+  private TextView        info;
+  private TextView        summary;
+  private TextView        folderName;
+  private ProgressBar     progress;
+  private TextView        progressSummary;
+//  private FragmentManager fragmentManager;
 
   @Override
   public @Nullable View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -70,6 +74,8 @@ public class BackupsPreferenceFragment extends Fragment {
     folderName      = view.findViewById(R.id.fragment_backup_folder_name);
     progress        = view.findViewById(R.id.fragment_backup_progress);
     progressSummary = view.findViewById(R.id.fragment_backup_progress_summary);
+//    fragmentManager = ((FragmentActivity) getActivity()).getSupportFragmentManager();
+//    updateFragmentLayout(new GoogleDriveBackupFragment(), "ADD");
 
     toggle.setOnClickListener(unused -> onToggleClicked());
     create.setOnClickListener(unused -> onCreateClicked());
@@ -108,6 +114,8 @@ public class BackupsPreferenceFragment extends Fragment {
         data != null                                        &&
         data.getData() != null)
     {
+      GoogleDriveBackupFragment fragment = ((GoogleDriveBackupFragment) getChildFragmentManager().findFragmentById(R.id.fragment_google_drive_layout));
+      fragment.onReceiveBackupLocationRequest(data);
       BackupDialog.showEnableBackupDialog(requireContext(),
                                           data,
                                           StorageUtil.getDisplayPath(requireContext(), data.getData()),
@@ -130,6 +138,26 @@ public class BackupsPreferenceFragment extends Fragment {
       setBackupSummary();
     }
   }
+
+//  private void updateFragmentLayout(@NonNull Fragment fragment, String update) {
+//    if (fragmentManager == null) {
+//      return;
+//    }
+//    FragmentTransaction transaction = fragmentManager.beginTransaction();
+//    switch (update) {
+//      case "ADD":
+//        transaction.replace(R.id.fragment_google_drive_layout, fragment);
+////        transaction.add(R.id.fragment_google_drive_layout, fragment);
+////        fragmentManager.findFragmentById(R.id.fragment_google_drive_layout).getActivity().setVisible(true);
+//      case "UPDATE":
+//        transaction.replace(R.id.fragment_google_drive_layout, fragment);
+//      case "REMOVE":
+//        transaction.remove(fragment);
+//    }
+////    FragmentTransaction transaction = fragmentManager.beginTransaction();
+////    transaction.add(R.id.fragment_google_drive_layout, fragment);
+//    transaction.commit();
+//  }
 
   private void setBackupStatus() {
     if (TextSecurePreferences.isBackupEnabled(requireContext())) {

@@ -159,6 +159,29 @@
             android:text="@string/BackupsPreferenceFragment__turn_on"
             android:textColor="@color/core_white"
             app:backgroundTint="?colorAccent" />
+<!--        <androidx.appcompat.widget.AppCompatButton-->
+<!--            android:id="@+id/fragment_google_drive_backup_toggle"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginStart="16dp"-->
+<!--            android:layout_marginTop="16dp"-->
+<!--            android:layout_marginBottom="20dp"-->
+<!--            android:background="@drawable/primary_action_button_background_36dp"-->
+<!--            android:paddingStart="16dp"-->
+<!--            android:paddingEnd="16dp"-->
+<!--            android:text="@string/BackupsPreferenceFragment__sign_in_google_drive"-->
+<!--            android:textColor="@color/core_white"-->
+<!--            app:backgroundTint="?colorAccent" />-->
+<!--        <FrameLayout-->
+<!--            android:id="@+id/fragment_google_drive_layout"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:visibility="visible" />-->
+        <fragment
+            android:name="org.thoughtcrime.securesms.preferences.GoogleDriveBackupFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/fragment_google_drive_layout" />
 
         <View
             android:layout_width="match_parent"

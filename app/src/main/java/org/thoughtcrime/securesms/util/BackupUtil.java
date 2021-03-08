@@ -232,7 +232,7 @@ public class BackupUtil {
     }
   }
 
-  private static long getBackupTimestamp(@NonNull String backupName) {
+  public static long getBackupTimestamp(@NonNull String backupName) {
     String[] prefixSuffix = backupName.split("[.]");
 
     if (prefixSuffix.length == 2) {

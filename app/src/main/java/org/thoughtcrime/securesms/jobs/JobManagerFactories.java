@@ -75,6 +75,7 @@ public final class JobManagerFactories {
       put(CreateSignedPreKeyJob.KEY,                 new CreateSignedPreKeyJob.Factory());
       put(DirectoryRefreshJob.KEY,                   new DirectoryRefreshJob.Factory());
       put(FcmRefreshJob.KEY,                         new FcmRefreshJob.Factory());
+      put(GoogleDriveBackupJob.KEY,                   new GoogleDriveBackupJob.Factory());
       put(GroupV1MigrationJob.KEY,                   new GroupV1MigrationJob.Factory());
       put(GroupCallUpdateSendJob.KEY,                new GroupCallUpdateSendJob.Factory());
       put(GroupCallPeekJob.KEY,                      new GroupCallPeekJob.Factory());

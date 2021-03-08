@@ -391,6 +391,8 @@
     <string name="BackupsPreferenceFragment__verify_backup_passphrase">Verify backup passphrase</string>
     <string name="BackupsPreferenceFragment__test_your_backup_passphrase">Test your backup passphrase and verify that it matches</string>
     <string name="BackupsPreferenceFragment__turn_on">Turn on</string>
+    <string name="BackupsPreferenceFragment__google_drive_backup">Backup to Drive</string>
+    <string name="BackupsPreferenceFragment__sign_in_google_drive">Google Drive Sign In</string>
     <string name="BackupsPreferenceFragment__turn_off">Turn off</string>
     <string name="BackupsPreferenceFragment__to_restore_a_backup">To restore a backup, install a new copy of Signal. Open the app and tap "Restore backup", then locate a backup file. %1$s</string>
     <string name="BackupsPreferenceFragment__learn_more">Learn more</string>

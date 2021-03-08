@@ -85,6 +85,12 @@ android {
     }
 
     signingConfigs {
+        debug {
+            storeFile file(RELEASE_STORE_FILE)
+            storePassword RELEASE_STORE_PASSWORD
+            keyAlias RELEASE_KEY_ALIAS
+            keyPassword RELEASE_KEY_PASSWORD
+        }
         if (keystores.debug != null) {
             debug {
                 storeFile file("${project.rootDir}/${keystores.debug.storeFile}")
@@ -324,6 +330,74 @@ dependencies {
     implementation 'com.google.android.exoplayer:exoplayer-core:2.9.1'
     implementation 'com.google.android.exoplayer:exoplayer-ui:2.9.1'
     implementation 'com.google.android.exoplayer:extension-mediasession:2.9.1'
+
+    // g drive libs
+//    implementation ('com.google.android.gms:play-services-auth:16.0.0') {
+//        exclude group: 'org.apache.httpcomponents'
+//        exclude group: 'com.google.guava'
+//    }
+//    implementation ('com.google.http-client:google-http-client-gson:1.26.0') {
+//    implementation ('com.google.http-client:google-http-client-gson:1.38.1') {
+//        exclude group: 'org.apache.httpcomponents'
+//        exclude group: 'com.google.guava'
+//    }
+////        implementation('com.google.api-client:google-api-client:1.23.0') {
+//        implementation('com.google.api-client:google-api-client:1.31.2') {
+//        exclude group: 'org.apache.httpcomponents', module: 'httpclient'
+//        exclude group: 'com.google.guava', module: 'guava-jdk5'
+//        transitive = false
+//    }
+//    implementation('com.google.api-client:google-api-client-android:1.26.0') {
+//        exclude group: 'org.apache.httpcomponents'
+//        exclude group: 'com.google.guava'
+//    }
+//    implementation('com.google.apis:google-api-services-drive:v3-rev136-1.25.0') {
+//        exclude group: 'org.apache.httpcomponents'
+//        exclude group: 'com.google.guava'
+//    }
+    // Google Play services Auth split
+    // Google Api Client library and Android extension
+    // Change to the API you want to access:
+    // Below is just an example for People REST API access
+//    implementation 'com.google.apis:google-api-services-people:v1-rev4-1.22.0'
+    implementation ('com.google.apis:google-api-services-people:v1-rev20210302-1.31.0') {
+        exclude group: 'org.apache.httpcomponents', module: 'httpclient'
+        exclude group: 'org.apache.httpcomponents', module: 'httpcore'
+    }
+    implementation('com.google.api-client:google-api-client:1.31.2') {
+        exclude group: 'org.apache.httpcomponents', module: 'httpclient'
+        exclude group: 'org.apache.httpcomponents', module: 'httpcore'
+        exclude group: 'com.google.guava', module: 'guava-jdk5'
+        exclude group: 'com.google.guava', module: 'listenablefuture'
+        exclude module: 'httpclient'
+        transitive = false
+    }
+    implementation 'com.google.guava:listenablefuture:9999.0-empty-to-avoid-conflict-with-guava'
+    implementation ('com.google.http-client:google-http-client-gson:1.38.1') {
+        exclude module: 'httpclient'
+        exclude module: 'httpcore'
+    }
+    implementation ('com.google.api-client:google-api-client-android:1.31.0') {
+        exclude group: 'org.apache.httpcomponents', module: 'httpclient'
+        exclude group: 'org.apache.httpcomponents', module: 'httpcore'
+//        exclude group: 'com.google.guava', module: 'guava-jdk5'
+//        exclude group: 'com.google.guava', module: 'listenablefuture'
+//        transitive = false
+    }
+//    implementation ('com.google.api-client:google-api-client:1.31.2') {
+//        transitive = false
+//    }
+//    implementation ('com.google.oauth-client:google-oauth-client-jetty:1.31.4') {
+//        transitive = false
+//    }
+//    implementation ('com.google.apis:google-api-services-drive:v3-rev20210207-1.31.0') {
+    implementation ('com.google.apis:google-api-services-drive:v3-rev110-1.23.0') {
+        exclude group: 'org.apache.httpcomponents', module: 'httpclient'
+        exclude group: 'org.apache.httpcomponents', module: 'httpcore'
+//        transitive = false
+    }
+//    implementation 'com.google.http-client:google-http-client-jackson2:1.38.1'
+//    implementation 'com.google.oauth-client:google-oauth-client-java6:1.31.4'
 
     implementation 'org.conscrypt:conscrypt-android:2.0.0'
     implementation 'org.signal:aesgcmprovider:0.0.3'

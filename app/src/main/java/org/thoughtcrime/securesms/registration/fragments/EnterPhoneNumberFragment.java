@@ -214,7 +214,7 @@ public final class EnterPhoneNumberFragment extends BaseRegistrationFragment {
 
     RegistrationService registrationService = RegistrationService.getInstance(e164number, model.getRegistrationSecret());
 
-    registrationService.requestVerificationCode(requireActivity(), mode, captcha,
+      registrationService.requestVerificationCode(requireActivity(), mode, captcha,
       new RegistrationCodeRequest.SmsVerificationCodeCallback() {
 
         @Override
